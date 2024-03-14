@@ -11,7 +11,7 @@
  Target Server Version : 100432
  File Encoding         : 65001
 
- Date: 12/03/2024 18:23:43
+ Date: 14/03/2024 14:54:43
 */
 
 SET NAMES utf8mb4;
@@ -29,12 +29,18 @@ CREATE TABLE `banners`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of banners
 -- ----------------------------
-INSERT INTO `banners` VALUES (6, '/images/2024-03-12-08-54-31-banner-duyen-car-3.jpg', 1, 0, '2024-03-12 08:54:31', '2024-03-12 08:54:31');
+INSERT INTO `banners` VALUES (6, '/images/2024-03-12-08-54-31-banner-duyen-car-3.jpg', 0, 0, '2024-03-12 08:54:31', '2024-03-12 14:31:28');
+INSERT INTO `banners` VALUES (7, '/images/2024-03-12-14-06-25-hinh-anh-gia-xe-VinFast-Lux-A2.0-ban-tieu-chuan-mau-do-mystique-red.png', 1, 1, '2024-03-12 14:06:25', '2024-03-12 14:06:25');
+INSERT INTO `banners` VALUES (8, '/images/2024-03-12-14-09-52-banner.jpg', 0, 0, '2024-03-12 14:09:52', '2024-03-12 14:10:31');
+INSERT INTO `banners` VALUES (9, '/images/2024-03-12-14-10-39-tải xuống.jpg', 0, 0, '2024-03-12 14:10:39', '2024-03-12 14:31:24');
+INSERT INTO `banners` VALUES (10, '/images/2024-03-12-14-31-35-1603338300_honda civic.jpg', 1, 0, '2024-03-12 14:31:35', '2024-03-12 14:31:35');
+INSERT INTO `banners` VALUES (11, '/images/2024-03-12-14-31-41-1603338000_DSC_7294_800x450.jpg', 1, 0, '2024-03-12 14:31:41', '2024-03-12 14:31:41');
+INSERT INTO `banners` VALUES (12, '/images/2024-03-12-14-31-49-1603337160_image.imgs.full.high.jpg', 1, 0, '2024-03-12 14:31:49', '2024-03-12 14:31:49');
 
 -- ----------------------------
 -- Table structure for categories
@@ -117,7 +123,15 @@ CREATE TABLE `info_ships`  (
   `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `address` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of info_ships
+-- ----------------------------
+INSERT INTO `info_ships` VALUES (12, 21, 'Trần Minh Khang', '0866411902', 'Xã Cẩm Sơn', 'Huyện Cai Lậy', 'Tỉnh Tiền Giang', '2024-03-12 13:38:29', '2024-03-12 13:38:29', 'trmkhang2001@gmail.com', '1102 Huỳnh Tấn Phát');
+INSERT INTO `info_ships` VALUES (14, 22, 'Tran Van An', '12313123123', 'Xã Quảng Thịnh', 'Huyện Hải Hà', 'Tỉnh Quảng Ninh', '2024-03-12 13:47:00', '2024-03-12 13:47:00', 'admin@mail.com', '1102 Huỳnh Tấn Phát');
+INSERT INTO `info_ships` VALUES (15, 22, 'Vui Cùng Noel', '12313123123', 'Xã Sơn Tình', 'Huyện Cẩm Khê', 'Tỉnh Phú Thọ', '2024-03-12 13:47:31', '2024-03-12 13:47:31', 'tranquocbao@gmail.com', '1102 Huỳnh Tấn Phát');
+INSERT INTO `info_ships` VALUES (16, 1, 'Trần Minh Khang', '0866411902', 'Phường Trưng Nhị', 'Thành phố Phúc Yên', 'Tỉnh Vĩnh Phúc', '2024-03-13 10:23:30', '2024-03-13 10:23:30', 'trmkhang2001@gmail.com', '1102 Huỳnh Tấn Phát');
 
 -- ----------------------------
 -- Table structure for migrations
@@ -128,7 +142,7 @@ CREATE TABLE `migrations`  (
   `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 63 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 64 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of migrations
@@ -176,6 +190,7 @@ INSERT INTO `migrations` VALUES (59, '2024_01_20_084907_create_tbl_address_ship_
 INSERT INTO `migrations` VALUES (60, '2024_01_20_090347_create_info_ships_table', 36);
 INSERT INTO `migrations` VALUES (61, '2024_01_21_100413_add_column_orders', 37);
 INSERT INTO `migrations` VALUES (62, '2024_01_21_101630_create_transactions_table', 38);
+INSERT INTO `migrations` VALUES (63, '2024_03_13_101941_create_review_table', 39);
 
 -- ----------------------------
 -- Table structure for order_items
@@ -194,7 +209,18 @@ CREATE TABLE `order_items`  (
   INDEX `order_items_order_id_foreign`(`order_id`) USING BTREE,
   CONSTRAINT `order_items_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT,
   CONSTRAINT `order_items_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 36 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 43 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of order_items
+-- ----------------------------
+INSERT INTO `order_items` VALUES (36, 28, 34, 1, '2024-03-12 13:38:44', '2024-03-12 13:38:44', 3000000);
+INSERT INTO `order_items` VALUES (37, 28, 36, 1, '2024-03-12 13:41:39', '2024-03-12 13:41:39', 3000000);
+INSERT INTO `order_items` VALUES (38, 27, 37, 1, '2024-03-12 13:43:20', '2024-03-12 13:43:20', 2000000);
+INSERT INTO `order_items` VALUES (39, 28, 38, 1, '2024-03-12 13:49:06', '2024-03-12 13:49:06', 3000000);
+INSERT INTO `order_items` VALUES (40, 28, 39, 1, '2024-03-12 13:59:12', '2024-03-12 13:59:12', 3000000);
+INSERT INTO `order_items` VALUES (41, 28, 40, 1, '2024-03-12 14:02:43', '2024-03-12 14:02:43', 3000000);
+INSERT INTO `order_items` VALUES (42, 32, 41, 1, '2024-03-13 10:29:26', '2024-03-13 10:29:26', 123456);
 
 -- ----------------------------
 -- Table structure for orders
@@ -222,7 +248,19 @@ CREATE TABLE `orders`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `orders_user_id_foreign`(`user_id`) USING BTREE,
   CONSTRAINT `orders_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 34 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 42 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of orders
+-- ----------------------------
+INSERT INTO `orders` VALUES (34, 21, 'Trần Minh Khang', '0866411902', 'trmkhang2001@gmail.com', 'Xã Cẩm Sơn', '1102 Huỳnh Tấn Phát', 'Huyện Cai Lậy', 'Tỉnh Tiền Giang', 3, NULL, NULL, '2024-03-12 13:38:44', '2024-03-12 13:43:39', 3150000, 0, '2024-03-20', '2024-03-28');
+INSERT INTO `orders` VALUES (35, 21, 'Trần Minh Khang', '0866411902', 'trmkhang2001@gmail.com', 'Xã Cẩm Sơn', '1102 Huỳnh Tấn Phát', 'Huyện Cai Lậy', 'Tỉnh Tiền Giang', 1, NULL, NULL, '2024-03-12 13:39:34', '2024-03-12 13:39:34', 150000, 0, '2024-03-20', '2024-03-28');
+INSERT INTO `orders` VALUES (36, 21, 'Trần Minh Khang', '0866411902', 'trmkhang2001@gmail.com', 'Xã Cẩm Sơn', '1102 Huỳnh Tấn Phát', 'Huyện Cai Lậy', 'Tỉnh Tiền Giang', 0, NULL, NULL, '2024-03-12 13:41:39', '2024-03-12 13:43:25', 3150000, 0, '2024-03-14', '2024-03-27');
+INSERT INTO `orders` VALUES (37, 21, 'Trần Minh Khang', '0866411902', 'trmkhang2001@gmail.com', 'Xã Cẩm Sơn', '1102 Huỳnh Tấn Phát', 'Huyện Cai Lậy', 'Tỉnh Tiền Giang', 0, NULL, NULL, '2024-03-12 13:43:20', '2024-03-12 13:43:26', 2150000, 0, '2024-03-12', '2024-03-27');
+INSERT INTO `orders` VALUES (38, 22, 'Tran Van An', '12313123123', 'admin@mail.com', 'Xã Quảng Thịnh', '1102 Huỳnh Tấn Phát', 'Huyện Hải Hà', 'Tỉnh Quảng Ninh', 4, NULL, NULL, '2024-03-12 13:49:06', '2024-03-12 13:49:18', 3150000, 0, '2024-03-20', '2024-04-05');
+INSERT INTO `orders` VALUES (39, 22, 'Tran Van An', '12313123123', 'admin@mail.com', 'Xã Quảng Thịnh', '1102 Huỳnh Tấn Phát', 'Huyện Hải Hà', 'Tỉnh Quảng Ninh', 1, NULL, NULL, '2024-03-12 13:59:12', '2024-03-12 13:59:12', 3150000, 0, '2024-03-14', '2024-03-29');
+INSERT INTO `orders` VALUES (40, 22, 'Tran Van An', '12313123123', 'admin@mail.com', 'Xã Quảng Thịnh', '1102 Huỳnh Tấn Phát', 'Huyện Hải Hà', 'Tỉnh Quảng Ninh', 1, NULL, NULL, '2024-03-12 14:02:43', '2024-03-12 14:02:43', 3150000, 0, '2024-03-13', '2024-03-16');
+INSERT INTO `orders` VALUES (41, 1, 'Trần Minh Khang', '0866411902', 'trmkhang2001@gmail.com', 'Phường Trưng Nhị', '1102 Huỳnh Tấn Phát', 'Thành phố Phúc Yên', 'Tỉnh Vĩnh Phúc', 1, NULL, NULL, '2024-03-13 10:29:26', '2024-03-13 10:29:26', 1481472, 0, '2024-03-14', '2024-03-26');
 
 -- ----------------------------
 -- Table structure for parameter_products
@@ -285,7 +323,7 @@ CREATE TABLE `products`  (
   `sku` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` double NOT NULL,
   `id_bh` int NULL DEFAULT NULL,
   `quantity` int NOT NULL,
@@ -296,13 +334,15 @@ CREATE TABLE `products`  (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 29 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 33 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of products
 -- ----------------------------
-INSERT INTO `products` VALUES (27, 'VF_LUXA', '/images/2024-03-12-07-08-06-hinh-anh-gia-xe-VinFast-Lux-A2.0-ban-tieu-chuan-mau-do-mystique-red.png', 'VinFast LuxA 2.0', 'Description', 2000000, NULL, -1, 1, 9, NULL, NULL, '2024-03-12 07:08:06', '2024-03-12 09:38:35');
-INSERT INTO `products` VALUES (28, 'VF9', '/images/2024-03-12-08-41-17-VF9thumjpg-1679907708.jpg', 'VinFast VF9', 'VinFast VF9', 3000000, NULL, 1, 1, 9, NULL, NULL, '2024-03-12 08:41:17', '2024-03-12 08:41:17');
+INSERT INTO `products` VALUES (27, 'VF_LUXA', '/images/2024-03-12-07-08-06-hinh-anh-gia-xe-VinFast-Lux-A2.0-ban-tieu-chuan-mau-do-mystique-red.png', 'VinFast LuxA 2.0', 'Description', 2000000, NULL, -1, 1, 9, NULL, NULL, '2024-03-12 07:08:06', '2024-03-12 13:44:16');
+INSERT INTO `products` VALUES (28, 'VF9', '/images/2024-03-12-08-41-17-VF9thumjpg-1679907708.jpg', 'VinFast VF9', 'VinFast VF9', 3000000, NULL, -1, 0, 9, NULL, NULL, '2024-03-12 08:41:17', '2024-03-12 14:02:43');
+INSERT INTO `products` VALUES (29, 'Mer', '/images/2024-03-12-14-23-27-banner.jpg', 'LMer', 'asdadada', 1500000, NULL, 1, 1, 9, NULL, NULL, '2024-03-12 14:23:27', '2024-03-12 14:23:27');
+INSERT INTO `products` VALUES (32, 'VICC', '/images/2024-03-13-10-15-13-1603338300_honda civic.png', '2020 Honda Civic', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent aliquet justo accumsan varius efficitur. Sed sit amet massa quam. Aenean dictum urna nulla, nec iaculis ligula ullamcorper eleifend. Nulla imperdiet semper leo. Aliquam elit lectus, cursus sit amet felis sed, sollicitudin sollicitudin dui. Ut placerat consectetur', 123456, NULL, 1, 0, 9, NULL, NULL, '2024-03-13 10:15:13', '2024-03-13 10:29:26');
 
 -- ----------------------------
 -- Table structure for promotions
@@ -325,6 +365,27 @@ CREATE TABLE `promotions`  (
 -- ----------------------------
 INSERT INTO `promotions` VALUES (1, 'Tết Đến Rồi', '30', '2023-12-30 00:00:00', '2024-02-09 00:00:00', 1, '2023-12-18 14:21:57', '2023-12-18 15:18:00');
 INSERT INTO `promotions` VALUES (2, 'Vui Cùng Noel', '25', '2023-12-18 00:00:00', '2023-12-28 00:00:00', 1, '2023-12-18 14:37:10', '2023-12-18 14:37:10');
+
+-- ----------------------------
+-- Table structure for reviews
+-- ----------------------------
+DROP TABLE IF EXISTS `reviews`;
+CREATE TABLE `reviews`  (
+  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `product_id` int NOT NULL,
+  `star` int NOT NULL,
+  `comments` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of reviews
+-- ----------------------------
+INSERT INTO `reviews` VALUES (1, 32, 2, '3', '2024-03-13 11:00:19', '2024-03-13 11:00:19');
+INSERT INTO `reviews` VALUES (2, 32, 2, '3', '2024-03-13 11:00:19', '2024-03-13 11:00:19');
+INSERT INTO `reviews` VALUES (3, 32, 2, '3', '2024-03-13 11:00:19', '2024-03-13 11:00:19');
 
 -- ----------------------------
 -- Table structure for roles
@@ -394,11 +455,13 @@ CREATE TABLE `users`  (
   `role_id` int NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `users_email_unique`(`email`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 23 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
 INSERT INTO `users` VALUES (1, 'admin', 'admin@mail.com', NULL, '$2y$12$4GPSoHX0meHhXrn61QrNkuaSx7rQP7IHyQcjE0dyKpKA1XrRWOLqS', '9pAhHhUxricGeb3YfysPCXbhs5gDfijD6pvrjFJsOekueu6Gp52YvskGFujR', '2023-12-18 06:33:05', '2023-12-18 06:33:05', '0866411902', NULL, NULL, 1);
+INSERT INTO `users` VALUES (21, 'Tôi Là User', 'user123@gmail.com', NULL, '$2y$12$xxAki3hxPeGyyJmcscTxFufRh4XpikOVxq4DfF2nfQiQF4nISyWue', NULL, '2024-03-12 13:28:21', '2024-03-12 13:28:21', '0866411902', NULL, NULL, 3);
+INSERT INTO `users` VALUES (22, 'Tran Van A', 'tranvana@gmail.com', NULL, '$2y$12$Buyli2wUF2N2yuXuMJq0NuKaB6PSyHUe2LSN8/XWLUKtnZ0K/xR7u', NULL, '2024-03-12 13:46:02', '2024-03-12 13:46:02', '0866411902', NULL, NULL, 3);
 
 SET FOREIGN_KEY_CHECKS = 1;
