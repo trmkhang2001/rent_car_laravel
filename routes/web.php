@@ -45,6 +45,7 @@ Route::controller(ClientsController::class)->group(function () {
     Route::get('/info/{id}', 'delete_info')->name('client.delete.info');
     Route::get('/createVNPAY/{id}/{amout}', 'createVNPAY')->name('request.pay');
     Route::get('/vnpay_return', 'returnVNPAY');
+    Route::post('/review', 'reviewStore')->name('review');
 });
 Route::controller(AuthController::class)->group(function () {
     Route::get('login', 'login')->name('login');

@@ -17,6 +17,10 @@ class Product extends Model
     {
         return $this->belongsTo(Promotion::class);
     }
+    public function reivew()
+    {
+        return $this->hasMany(Review::class);
+    }
     protected $fillable = [
         'sku',
         'img',

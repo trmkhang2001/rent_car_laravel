@@ -92,6 +92,10 @@
                                                             d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z" />
                                                     </svg></a>
                                             @endif
+                                            @if ($order->status == config('app.order_status.DONE'))
+                                                <button onclick="openReviewModal('{{ $order->id }}')"
+                                                    class="btn btn-success">Trả Xe</a>
+                                            @endif
                                         </div>
                                     </td>
                                 </tr>
@@ -111,4 +115,40 @@
 
         </div>
     </div>
+    <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header mt-3 ms-3">
+                    <h5 class="modal-title" id="exampleModalLabel">Đánh giá</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Form đánh giá -->
+                    <form action="{{ route('review') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="order_id" id="order_id">
+                        <div class="mb-3">
+                            <label for="starRating" class="form-label">Đánh giá sao:</label>
+                            <input type="number" class="form-control" id="starRating" name="star" min="1"
+                                max="5" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="comments" class="form-label">Nhận xét:</label>
+                            <textarea class="form-control" id="comments" name="comments" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Gửi đánh giá</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
+@push('scripts')
+    <script>
+        // Function để mở modal và gán order_id cho form
+        function openReviewModal(orderId) {
+            $('#order_id').val(orderId);
+            $('#reviewModal').modal('show');
+        }
+    </script>
+@endpush

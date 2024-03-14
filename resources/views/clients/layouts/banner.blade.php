@@ -1,4 +1,4 @@
-<section class="pt-0">
+<section class="pt-0 h-100">
     <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             @foreach ($banners as $key => $banner)

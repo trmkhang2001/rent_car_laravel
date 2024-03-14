@@ -42,7 +42,7 @@ return [
     |
     */
 
-    'order_status' => ['ORDER' => '1', 'ACCEPT' => '2', 'SHIPPING' => '3', 'DONE' => '4', 'CANCEL' => '0'],
+    'order_status' => ['ORDER' => '1', 'ACCEPT' => '2', 'SHIPPING' => '3', 'DONE' => '4', 'CANCEL' => '0', 'DROP' => '5'],
 
     /*
     |--------------------------------------------------------------------------

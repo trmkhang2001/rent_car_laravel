@@ -53,13 +53,13 @@
                                 </div>
                             </div>
                             <div class="">
-                                <div class="mb-3">
+                                {{-- <div class="mb-3">
                                     <input type="radio" name="vnpay" id="flexCheckDefault" value="1"> Thanh toán
                                     VNPAY
-                                </div>
+                                </div> --}}
                                 <div class="mb-3">
-                                    <input type="radio" name="vnpay" id="flexCheckDefault" value="0" checked> Ship
-                                    COD
+                                    <input type="radio" name="vnpay" id="flexCheckDefault" value="0" checked> Lấy
+                                    Xe Tại Cửa Hàng
                                 </div>
                                 <button type="submit" class="btn btn-solid-default "> Đặt hàng </button>
                             </div>
@@ -136,24 +136,6 @@
                                     </li>
                                     <?php $total += $item->price * $item->qty; ?>
                                 @endforeach
-                                <li class="list-group-item d-flex lh-condensed justify-content-between">
-                                    <span class="fw-bold">Phí ship (VNĐ)</span>
-                                    <strong>
-                                        {{ number_format(config('app.ship.PRICE')) . ' VNĐ' }}
-                                    </strong>
-                                </li>
-                                <li class="list-group-item d-flex lh-condensed justify-content-between">
-                                    <span class="fw-bold">VAT (0%)</span>
-                                    <strong>
-                                        0 VNĐ
-                                    </strong>
-                                </li>
-                                <li class="list-group-item d-flex lh-condensed justify-content-between">
-                                    <span class="fw-bold">Tổng cộng (VNĐ)</span>
-                                    <strong>
-                                        {{ number_format($total) . ' VNĐ' }}
-                                    </strong>
-                                </li>
                                 <a href="/cart" class="btn btn-solid-default mt-4">Quay về giỏ hàng</a>
                             </ul>
                         </div>

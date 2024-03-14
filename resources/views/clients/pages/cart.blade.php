@@ -54,7 +54,7 @@
                                     <th scope="col">image</th>
                                     <th scope="col">product name</th>
                                     <th scope="col">price</th>
-                                    <th scope="col">quantity</th>
+
                                     <th scope="col">total</th>
                                     <th scope="col">action</th>
                                 </tr>
@@ -95,15 +95,6 @@
                                             <h2>{{ number_format($item->price) }}</h2>
                                         </td>
                                         <td>
-                                            <div class="qty-box">
-                                                <div class="input-group">
-                                                    <input type="number" name="quantity" data-rowid="{{ $item->rowId }}"
-                                                        onchange="updateQuantity(this)" class="form-control input-number"
-                                                        value="{{ $item->qty }}">
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
                                             <h2 class="td-color">{{ number_format($item->price) }}</h2>
                                         </td>
                                         <td>
@@ -129,7 +120,7 @@
                             <div class="col-sm-5 col-7">
                                 <div class="left-side-button float-start">
                                     <a href="/product" class="btn btn-solid-default btn fw-bold mb-0 ms-0">
-                                        <i class="fas fa-arrow-left"></i> Tiếp tục mua hàng</a>
+                                        <i class="fas fa-arrow-left"></i> Tiếp tục tìm xe</a>
                                 </div>
                             </div>
                         </div>

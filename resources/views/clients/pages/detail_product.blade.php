@@ -48,10 +48,6 @@
                                 <div class="details-image-concept">
                                     <h2>{{ $product->name }}</h2>
                                 </div>
-                                <div class="details-image-concept">
-                                    <h2>So luong : {{ $product->quantity }}</h2>
-                                </div>
-
                                 <div class="label-section">
                                     <span class="badge badge-grey-color">#1 Best seller</span>
                                     <span class="label-text">trong Thuê Xe</span>
@@ -64,13 +60,9 @@
                                 <div class="product-buttons">
                                     @if ($product->status == config('app.status.DEACTIVE'))
                                         <a href="" class="btn btn-danger hover-solid btn-animation">
-                                            <span>Hết hàng</span>
+                                            <span>Đã được thuê</span>
                                         </a>
                                     @else
-                                        <a href="javascript:void(0)" class="btn btn-solid">
-                                            <i class="fa fa-bookmark fz-16 me-2"></i>
-                                            <span>Yêu thích</span>
-                                        </a>
                                         <a href="javascript:void(0)"
                                             onclick="event.preventDefault();document.getElementById('addtocart').submit();"
                                             id="cartEffect" class="btn btn-solid hover-solid btn-animation">
@@ -89,38 +81,6 @@
                                 <div class="" style="height: 250px">
                                     {{ $product->description }}
                                 </div>
-                                <div class="border-product">
-                                    <h6 class="product-title d-block">share it</h6>
-                                    <div class="product-icon">
-                                        <ul class="product-social">
-                                            <li>
-                                                <a href="https://www.facebook.com/">
-                                                    <i class="fab fa-facebook-f"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="https://www.google.com/">
-                                                    <i class="fab fa-google-plus-g"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="https://twitter.com/">
-                                                    <i class="fab fa-twitter"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="https://www.instagram.com/">
-                                                    <i class="fab fa-instagram"></i>
-                                                </a>
-                                            </li>
-                                            <li class="pe-0">
-                                                <a href="https://www.google.com/">
-                                                    <i class="fas fa-rss"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -133,6 +93,8 @@
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
                             <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#desc"
                                 type="button">Chi tiết</button>
+                            <button class="nav-link" id="nav-speci-tab" data-bs-toggle="tab" data-bs-target="#speci"
+                                type="button">Đánh giá</button>
                         </div>
                     </nav>
 
@@ -144,6 +106,37 @@
                                     <p class="font-light">
                                         Thuê xê cần gặp mặt trực tiếp thì liên hê: 123456789
                                     </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="speci">
+                            <div class="pro mb-4">
+                                <p class="font-light">Tất cả đánh giá.</p>
+                                <div class="table-responsive">
+                                    @foreach ($reviews as $review)
+                                        <div class="mb-3 d-flex">
+                                            <div class="col-2">
+                                                <img src="/images/user.png" alt="" class="img-fluid rounded-circle"
+                                                    style="width: 70px; height: 70px;">
+                                            </div>
+                                            <div class="col-8">
+                                                <div class="">
+                                                    <h4>Sao đánh giá:</h4>
+                                                    <div class="">
+                                                        @for ($i = 0; $i < $review->star; $i++)
+                                                            <img src="/images/star.png" alt=""
+                                                                class="img-fluid rounded-circle"
+                                                                style="width: 16px; height: 16px;">
+                                                        @endfor
+                                                    </div>
+                                                </div>
+                                                <div class="">
+                                                    <h4>Bình luận:</h4>
+                                                    <div class=""> {{ $review->comments }}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>

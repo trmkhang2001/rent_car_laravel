@@ -11,9 +11,11 @@ use App\Models\OrderItem;
 use App\Models\ParameterProducts;
 use App\Models\Product;
 use App\Models\Promotion;
+use App\Models\Review;
 use App\Models\Supplier;
 use App\Models\Transactions;
 use App\Models\User;
+use DateTime;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use GuzzleHttp\Promise\Create;
@@ -137,9 +139,9 @@ class ClientsController extends Controller
     }
     public function detail(String $id)
     {
-        $product = Product::with('category')->find($id);
-        $param = ParameterProducts::where('id_product', $id)->first();
-        return view('clients.pages.detail_product', ['product' => $product, 'param' => $param]);
+        $product = Product::find($id);
+        $reviews = Review::where('product_id', $id)->paginate(5);
+        return view('clients.pages.detail_product', ['product' => $product, 'reviews' => $reviews]);
     }
     public function cart()
     {
@@ -176,8 +178,8 @@ class ClientsController extends Controller
             $cartItems = Cart::instance('cart')->content();
             foreach ($cartItems as $item) {
                 $product = Product::findOrFail($item->id);
-                if ($item->qty > $product->quantity) {
-                    return redirect()->back()->with('error', 'Số lượng bạn quá lớn với tồn kho');
+                if ($product->status == config('app.status.DEACTIVE')) {
+                    return redirect()->back()->with('error', 'Xe này đã được thuê');
                 }
             }
             if ($cartItems->count() > 0) {
@@ -187,7 +189,7 @@ class ClientsController extends Controller
                 return view('clients.pages.cart', ['cartItems' => $cartItems]);
             }
         } else {
-            return redirect()->route('client.page.cart')->with('error', 'Vui lòng đăng nhập để đặt hàng và theo dõi đơn hàng !');
+            return redirect()->route('client.page.cart')->with('error', 'Vui lòng đăng nhập để thanh toán và theo dõi đơn !');
         }
     }
     public function order(Request $request)
@@ -196,11 +198,12 @@ class ClientsController extends Controller
         $pay = $request->vnpay;
         $setDate = $request->setDate;
         $dropDate = $request->dropDate;
+        $date = (new DateTime($dropDate))->diff((new DateTime($setDate)));
         $infoShip = InfoShips::findOrFail($id);
         $totalcat = Cart::instance('cart')->content();
-        $total = config('app.ship.PRICE');
+        $total = 0;
         foreach ($totalcat as $cart) {
-            $total += $cart->price * $cart->qty;
+            $total += $cart->price * $date->days;
         }
         $carts = Cart::instance('cart')->content();
         if (Auth::check()) {
@@ -360,5 +363,22 @@ class ClientsController extends Controller
                 echo "Giao dịch không thành công";
             }
         }
+    }
+    public function reviewStore(Request $request)
+    {
+        $order_id = $request->order_id;
+        $order = Order::with('orderItems')->findOrFail($order_id);
+        foreach ($order->orderItems as $item) {
+            $product_id = $item->product_id;
+            break;
+        }
+        $star = $request->star;
+        $comments = $request->comments;
+        $review = Review::create([
+            'product_id' => $product_id,
+            'star' => $star,
+            'comments' => $comments,
+        ]);
+        return $review;
     }
 }

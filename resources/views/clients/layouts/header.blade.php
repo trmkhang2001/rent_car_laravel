@@ -16,20 +16,11 @@
             </svg><span class="ms-2 me-5 text-white">thuexe123@gmail.com</span>
         </div>
     </div>
-    <div class="main-header navbar-searchbar bg-white mb-1">
+    <div class="main-header navbar-searchbar bg-white mb-1" style="background-color: black !important">
         <div class="container-fluid-lg">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="main-menu">
-                        <div class="menu-left">
-                            <div class="brand-logo">
-                                <a href="/">
-                                    <img src="{{ asset('images/logo.png') }}" class="h-logo img-fluid blur-up lazyload"
-                                        alt="logo">
-                                </a>
-                            </div>
-
-                        </div>
                         <nav>
                             <div class="main-navbar">
                                 <div id="mainnav">
@@ -44,11 +35,14 @@
                                                 </span>
                                             </div>
                                         </li>
-                                        <li><a href="/" class="nav-link menu-title fs-5 fw-bold">Trang chủ</a>
+                                        <li><a href="/" class="nav-link menu-title fs-5 fw-bold"
+                                                style="color: white">Trang chủ</a>
                                         </li>
-                                        <li><a href="/product" class="nav-link menu-title fs-5 fw-bold">Thuê Xe</a>
+                                        <li><a href="/product" class="nav-link menu-title fs-5 fw-bold"
+                                                style="color: white">Thuê Xe</a>
                                         </li>
-                                        <li><a href="/about" class="nav-link menu-title fs-5 fw-bold">Giới
+                                        <li><a href="/about" class="nav-link menu-title fs-5 fw-bold"
+                                                style="color: white">Giới
                                                 thiệu</a>
                                         </li>
                                     </ul>
@@ -57,24 +51,9 @@
                         </nav>
                         <div class="menu-right">
                             <ul>
-                                <li>
-                                    <div class="search-box theme-bg-color">
-                                        <i data-feather="search"></i>
-                                    </div>
-                                </li>
                                 <li class="onhover-dropdown wislist-dropdown">
                                     <div class="cart-media">
-                                        <a href="wishlist/list.html">
-                                            <i data-feather="heart"></i>
-                                            <span id="wishlist-count" class="label label-theme rounded-pill">
-                                                0
-                                            </span>
-                                        </a>
-                                    </div>
-                                </li>
-                                <li class="onhover-dropdown wislist-dropdown">
-                                    <div class="cart-media">
-                                        <a href="/cart">
+                                        <a href="/cart" style="color: white;">
                                             <i data-feather="shopping-cart"></i>
                                             <span id="cart-count" class="label label-theme rounded-pill">
                                                 {{ Cart::instance('cart')->content()->count() }}

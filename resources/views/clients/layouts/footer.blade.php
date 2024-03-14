@@ -32,15 +32,6 @@
                     </svg></a>
             </div>
         </div>
-        <div class="">
-            <div class="text-white fw-bold fs-4 mb-3">
-                <span>Đăng ký email để nhận thông tin khuyễn mãi</span>
-            </div>
-            <div class="d-flex flex-stuck fs-4">
-                <input type="text" placeholder="Nhập email" class=" rounded-0 form-control">
-                <button class="btn btn-white">Đăng ký</button>
-            </div>
-        </div>
     </div>
 </div>
 <div class="container-fluid bg-white">

@@ -92,7 +92,7 @@ span {
 }
 
 .theme-bg-color {
-    background-color: var(--theme-color);
+    background-color: #3f4347;
 }
 
 .title {
@@ -156,12 +156,12 @@ span {
     }
 }
 
-.slick-slider .slick-list .slick-slide>div {
+.slick-slider .slick-list .slick-slide > div {
     margin: 0 12px;
 }
 
 @media (max-width: 575px) {
-    .slick-slider .slick-list .slick-slide>div {
+    .slick-slider .slick-list .slick-slide > div {
         margin: 0 6px;
     }
 }
@@ -409,4 +409,7 @@ span {
     margin-bottom: 2px;
     font-weight: 600;
     font-size: calc(14px + (24 - 14) * ((100vw - 320px) / (1920 - 320)));
+}
+.banner {
+    width: 40%;
 }

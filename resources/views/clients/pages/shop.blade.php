@@ -16,7 +16,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h3>Shop</h3>
+                    <h3>Danh Sách Xe</h3>
                     <nav>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
@@ -24,7 +24,7 @@
                                     <i class="fas fa-home"></i>
                                 </a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Shop</li>
+                            <li class="breadcrumb-item active" aria-current="page">Thuê Xe</li>
                         </ol>
                     </nav>
                 </div>
